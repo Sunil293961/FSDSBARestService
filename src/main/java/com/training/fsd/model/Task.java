@@ -117,6 +117,20 @@ public class Task implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public Task(int taskId, ParentTask parentTask, Project project, User user, String taskName, Date startDate,
+			Date endDate, int priority, String status) {
+		super();
+		this.taskId = taskId;
+		this.parentTask = parentTask;
+		this.project = project;
+		this.user = user;
+		this.taskName = taskName;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.priority = priority;
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", parentTask=" + parentTask + ", project=" + project + ", user=" + user

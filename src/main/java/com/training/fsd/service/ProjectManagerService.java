@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,7 +71,7 @@ public class ProjectManagerService {
 		logger.debug("Service Method: getProjects...");
 		Iterable<Project> proList;
 		List<Project> projects = new ArrayList<Project>();
-		proList = projectRepository.findAll();
+		proList = projectRepository.getProjectsWithTaskSummary(JpaSort.unsafe("Project").ascending());
 		for (Project project : proList) {
 			logger.debug(project.toString());
 			projects.add(project);
@@ -235,7 +236,6 @@ public class ProjectManagerService {
 		List<Task> tasks = new ArrayList<Task>();
 		proList = taskRepository.findAll();
 		for (Task task1 : proList) {
-			logger.debug(task1.toString());
 			tasks.add(task1);
 		}
 		logger.debug("Service Method: End getUsers...");
@@ -249,7 +249,6 @@ public class ProjectManagerService {
 
 	@Transactional
 	public Optional<Task> findTaskById(int taskId) {
-		logger.debug("Service Method: findTaskById...");
 		return taskRepository.findById(taskId);
 
 	}
@@ -261,18 +260,14 @@ public class ProjectManagerService {
 
 	@Transactional
 	public List<Task> findTaskByProjectId(int project_id) {
-		logger.debug("Service:findByProjectId");
 		List<Task> tasks = new ArrayList<Task>();
 		tasks = taskRepository.findByProjectId(project_id);
 		return tasks;
 
 	}
 	public void deleteTask(int taskId) {
-		// TODO Auto-generated method stub
-		logger.debug("Service Method: Start Delete task...");
-		taskRepository.deleteById(taskId);
-		logger.debug("Record Deleted successfully");
-		logger.debug("Service Method: End Delete task...");
+		// TODO Auto-generated method stub		
+		taskRepository.deleteById(taskId);	
 		
 	}
 

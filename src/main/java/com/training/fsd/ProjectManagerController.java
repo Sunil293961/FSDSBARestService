@@ -272,9 +272,9 @@ public class ProjectManagerController {
 	 * @return
 	 */
 	// working fine
-	// http://localhost:8085/projectManagerService/getTask/1
-	@GetMapping(value = "/getTask/{taskId}", produces = "application/json")
-	public Task getTasksById(@PathVariable("taskId") int taskId) {
+	// http://localhost:8085/projectManagerService/getTask?taskId=1
+	@GetMapping(value = "/getTask", produces = "application/json")
+	public Task getTasksById(@RequestParam("taskId") int taskId) {
 		logger.debug("getTasksById");
 		return service.findTaskById(taskId).get();
 	}
@@ -287,7 +287,7 @@ public class ProjectManagerController {
 	// need to test.
 	@GetMapping(value = "/getTasksByProjectId/{projectId}", produces = "application/json")
 	public List<Task> getAllTasksByProjectId(@PathVariable("projectId") int projectId) {
-		logger.debug("get All Task by ProjectId");
+		//logger.debug("get All Task by ProjectId");
 		return service.findTaskByProjectId(projectId);
 	}
 	/***
@@ -299,7 +299,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/tasks/8
 	@DeleteMapping(value = "tasks/{taskId}")
 	public void deleteTask(@PathVariable("taskId") int taskId) {
-		logger.debug("delete project..");
+		//logger.debug("delete project..");
 		service.deleteTask(taskId);
 	}
 
@@ -316,7 +316,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/createParentTask
 	@PostMapping(value = "/createParentTask", produces = "application/json")
 	public ParentTask createParentTask(@RequestBody ParentTask parentTask) {
-		logger.debug("create Parent task");
+		//logger.debug("create Parent task");
 		return service.createParentTask(parentTask);
 	}
 
@@ -329,7 +329,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/getParentTask/2
 	@GetMapping(value = "/getParentTask/{parentId}", produces = "application/json")
 	public ParentTask getParentTaskById(@PathVariable("parentId") int parentId) {
-		logger.debug("get Parent task");
+		//logger.debug("get Parent task");
 		return service.findParentTaskById(parentId).get();
 	}
 
@@ -341,7 +341,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/getParentTasks
 	@GetMapping(value = "/getParentTasks", produces = "application/json")
 	public List<ParentTask> getAllParentTasks() {
-		logger.debug("get Parent tasks");
+		//logger.debug("get Parent tasks");
 		return service.findAllParentTasks();
 	}
 
@@ -354,7 +354,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/parentTasks/5
 	@DeleteMapping(value = "parentTasks/{parentId}")
 	public void deleteParentTask(@PathVariable("parentId") int parentId) {
-		logger.debug("delete ParentTask..");
+		//logger.debug("delete ParentTask..");
 		service.deleteParentTask(parentId);
 	}
 
@@ -367,7 +367,7 @@ public class ProjectManagerController {
 	// http://localhost:8085/projectManagerService/updateParentTask
 	@PutMapping(value = "/updateParentTask", produces = "application/json")
 	public ParentTask updateTask(@RequestBody ParentTask task) {
-		logger.debug("update parent Task");
+		//logger.debug("update parent Task");
 		return service.updateParentTask(task);
 	}
 

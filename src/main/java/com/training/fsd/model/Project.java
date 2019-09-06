@@ -151,6 +151,7 @@ public class Project implements Serializable {
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
+	
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", startDate=" + startDate

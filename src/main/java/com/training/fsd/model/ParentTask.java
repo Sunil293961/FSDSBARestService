@@ -18,13 +18,7 @@ import javax.persistence.Table;
 @Table(name="parenttask")
 public class ParentTask {
 
-	/**
-	 * 
-	 */
-	public ParentTask() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="Parent_ID")
@@ -41,6 +35,19 @@ public class ParentTask {
 		return parentTaskName;
 	}
 	public void setParentTaskName(String parentTaskName) {
+		this.parentTaskName = parentTaskName;
+	}
+	/**
+	 * 
+	 */
+	public ParentTask() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ParentTask(int parentId, String parentTaskName) {
+		super();
+		this.parentId = parentId;
 		this.parentTaskName = parentTaskName;
 	}
 	@Override

@@ -22,13 +22,7 @@ public class User implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	/**
-	 * default constructor
-	 */
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="User_ID")
@@ -65,6 +59,21 @@ public class User implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	/**
+	 * default constructor
+	 */
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public User(int userId, String firstName, String lastName, String employeeId) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.employeeId = employeeId;
 	}
 	@Override
 	public String toString() {
